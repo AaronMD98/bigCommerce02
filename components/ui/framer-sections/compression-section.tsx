@@ -1,0 +1,72 @@
+'use client';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import classNames from 'classnames';
+
+interface ColumnWithImage {
+  title: string;
+  copy: string;
+  image: any;
+  imageAlt?: string;
+  reverse?: boolean;
+}
+
+export default function AirbackSection({
+  title,
+  copy,
+  image,
+  imageAlt = 'Image',
+  reverse = false,
+}: ColumnWithImage) {
+  const sectionClasses = classNames('grid py-12 md:grid-cols-2 gap-4', {
+    'md:grid-cols-2': !reverse, // Standard positioning
+    'md:grid-cols-2 md:order-1': reverse, // Reversed positioning
+  });
+
+  const imageClasses = classNames({
+    'order-last': reverse, // Reverse position of image if `reverse` is true
+  });
+
+  const slideDirectionColOne: number = !reverse ? -50 : 50;
+  const slideDirectionColTwo: number = reverse ? -50 : 50;
+
+  return (
+    <motion.section
+      className={sectionClasses}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div
+        className={imageClasses}
+        initial={{ x: slideDirectionColOne, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <Image
+          src={image}
+          loading={'lazy'}
+          alt={imageAlt}
+          aria-label="informative image AirBack"
+          className="rounded-md"
+          width={800}
+          height={800}
+        />
+      </motion.div>
+      <motion.div
+        className="flex items-center px-2 md:px-4"
+        initial={{ x: slideDirectionColTwo, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <div className="flex flex-col gap-4">
+          <h1 className="text-2xl font-semibold md:text-4xl">{title}</h1>
+          <p className="opacity-80">{copy}</p>
+        </div>
+      </motion.div>
+    </motion.section>
+  );
+}

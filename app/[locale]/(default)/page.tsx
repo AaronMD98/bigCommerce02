@@ -46,7 +46,7 @@ export default async function Home({ params: { locale } }: Props) {
 
   return (
     <>
-      <Hero />
+      <Hero id="hero" />
       <div className="flex flex-col items-center">
         <ParallaxText baseVelocity={1} numberOfChildren={4}>
           {images.map((image, index) => (

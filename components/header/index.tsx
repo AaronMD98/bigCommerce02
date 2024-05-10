@@ -42,7 +42,7 @@ export const Header = async ({ cart, data }: Props) => {
   const customerId = await getSessionCustomerId();
 
   return (
-    <header className="glass-effect sticky top-0  z-50">
+    <header className="sticky top-0 z-50  border-b bg-white shadow">
       <NavigationMenu className="flex">
         {data.settings && (
           <NavigationMenuLink asChild className="w-max shrink-0 px-0">

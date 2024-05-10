@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import classNames from 'classnames';
+import { cn } from '~/lib/utils';
 
 interface ColumnWithImage {
   title: string;
@@ -18,12 +18,12 @@ export default function AirbackSection({
   imageAlt = 'Image',
   reverse = false,
 }: ColumnWithImage) {
-  const sectionClasses = classNames('grid py-12 md:grid-cols-2 gap-4', {
+  const sectionClasses = cn('grid py-12 md:grid-cols-2 gap-4', {
     'md:grid-cols-2': !reverse, // Standard positioning
     'md:grid-cols-2 md:order-1': reverse, // Reversed positioning
   });
 
-  const imageClasses = classNames({
+  const imageClasses = cn({
     'order-last': reverse, // Reverse position of image if `reverse` is true
   });
 

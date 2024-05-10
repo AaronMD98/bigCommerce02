@@ -44,9 +44,7 @@ export default async function DefaultLayout({ children, params: { locale } }: Pr
     <>
       <Header cart={<Cart />} data={data.site} />
 
-      <main className="flex-1 px-6 2xl:container sm:px-10 lg:px-12 2xl:mx-auto 2xl:px-0">
-        {children}
-      </main>
+      <main className="">{children}</main>
 
       <Suspense fallback={null}>
         <NextIntlClientProvider locale={locale} messages={{ Product: messages.Product ?? {} }}>

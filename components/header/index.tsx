@@ -42,7 +42,7 @@ export const Header = async ({ cart, data }: Props) => {
   const customerId = await getSessionCustomerId();
 
   return (
-    <header className="sticky top-0 z-50  border-b bg-white shadow">
+    <header className="sticky top-0 z-20  border-b bg-white shadow">
       <NavigationMenu className="flex">
         {data.settings && (
           <NavigationMenuLink asChild className="w-max shrink-0 px-0">
@@ -58,7 +58,7 @@ export const Header = async ({ cart, data }: Props) => {
             {[
               { path: 'our-story', label: 'Our Story' },
               { path: 'blog', label: 'Blogs' },
-              { path: 'news', label: 'News' },
+              // { path: 'news', label: 'News' },
               { path: 'shop', label: 'Shop' },
             ].map((item, index) => {
               return (

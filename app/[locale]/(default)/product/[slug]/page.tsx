@@ -22,7 +22,7 @@ interface ProductPageProps {
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const productId = Number(params.slug);
-  const product = await getProduct(productId);
+  const product: any = await getProduct(productId); /// TBA type
 
   if (!product) {
     return {};

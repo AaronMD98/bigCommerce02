@@ -97,7 +97,7 @@ export const ProductCard = ({
 
   // let isHovering = null;
 
-  console.log('PRODUCTS', product.path);
+  // console.log('PRODUCTS', product.path);
 
   return (
     <ComponentsProductCard key={product.entityId}>

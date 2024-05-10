@@ -19,6 +19,9 @@ export const Cart = ({ product }: { product: Partial<Product> }) => {
   const searchParams = useSearchParams();
 
   const t = useTranslations('Product.ProductSheet');
+  // const t = useTranslations('Add To Cart');
+
+  console.log(t('quickAdd'));
 
   if (!product.entityId) {
     return null;

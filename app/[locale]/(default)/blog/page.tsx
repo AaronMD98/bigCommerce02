@@ -27,9 +27,11 @@ export default async function BlogPostPage({ params: { locale }, searchParams }:
   const blogPosts = await getBlogPosts(searchParams);
   const t = await getTranslations({ locale, namespace: 'Pagination' });
 
-  // if (!blogPosts || !blogPosts.isVisibleInNavigation) {
-  //   return notFound();
-  // }
+  console.log(blogPosts);
+
+  if (!blogPosts || !blogPosts.isVisibleInNavigation) {
+    return notFound();
+  }
 
   return (
     // <div className="mx-auto max-w-screen-xl">

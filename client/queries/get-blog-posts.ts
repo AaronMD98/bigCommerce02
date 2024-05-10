@@ -69,6 +69,8 @@ export const getBlogPosts = cache(
       fetchOptions: { next: { revalidate } },
     });
 
+    console.log(response.data.site.content);
+
     const { blog } = response.data.site.content;
 
     if (!blog) {

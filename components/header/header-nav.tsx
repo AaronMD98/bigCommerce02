@@ -36,14 +36,17 @@ interface Props {
   data: FragmentOf<typeof HeaderNavFragment>['categoryTree'];
   className?: string;
   inCollapsedNav?: boolean;
+  links?: any;
 }
 
-export const HeaderNav = async ({ data, className, inCollapsedNav = false }: Props) => {
+export const HeaderNav = async ({ data, className, inCollapsedNav = false, links }: Props) => {
   // To prevent the navigation menu from overflowing, we limit the number of categories to 6.
   // To show a full list of categories, modify the `slice` method to remove the limit.
   // Will require modification of navigation menu styles to accommodate the additional categories.
   const categoryTree = data.slice(0, 6);
   const customerId = await getSessionCustomerId();
+
+  console.log('CATAGORY', categoryTree);
 
   return (
     <>
@@ -54,7 +57,7 @@ export const HeaderNav = async ({ data, className, inCollapsedNav = false }: Pro
           className,
         )}
       >
-        {categoryTree.map((category) => (
+        {/* {categoryTree.map((category) => (
           <NavigationMenuItem className={cn(inCollapsedNav && 'w-full')} key={category.path}>
             {category.children.length > 0 ? (
               <>
@@ -103,7 +106,7 @@ export const HeaderNav = async ({ data, className, inCollapsedNav = false }: Pro
               </NavigationMenuLink>
             )}
           </NavigationMenuItem>
-        ))}
+        ))} */}
       </NavigationMenuList>
       {inCollapsedNav && (
         <NavigationMenuList className={cn('flex-col items-start border-t border-gray-200 pt-6')}>
@@ -119,6 +122,18 @@ export const HeaderNav = async ({ data, className, inCollapsedNav = false }: Pro
               </NavigationMenuLink>
             )}
           </NavigationMenuItem>
+
+          {links.map((item: any, index: number) => {
+            return (
+              <NavigationMenuLink
+                key={index}
+                className="font-semibold capitalize duration-200 hover:font-thin"
+                href={`/${item.path}`}
+              >
+                <h1>{item.label}</h1>
+              </NavigationMenuLink>
+            );
+          })}
         </NavigationMenuList>
       )}
     </>

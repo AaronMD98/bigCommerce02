@@ -9,6 +9,7 @@ import { revalidate } from '~/client/revalidate-target';
 import { Footer, FooterFragment } from '~/components/footer/footer';
 import { Header, HeaderFragment } from '~/components/header';
 import { Cart } from '~/components/header/cart';
+
 import { ProductSheet } from '~/components/product-sheet';
 import { LocaleType } from '~/i18n';
 

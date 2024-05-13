@@ -42,7 +42,7 @@ const GalleryPreviousIndicator = forwardRef<ElementRef<'button'>, ComponentProps
       <button
         aria-label="Previous product image"
         className={cn(
-          'focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
+          'cursor-pointer rounded-full p-2 duration-200 hover:bg-white/40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
           className,
         )}
         onClick={(e) => {
@@ -72,7 +72,7 @@ const GalleryNextIndicator = forwardRef<ElementRef<'button'>, ComponentPropsWith
       <button
         aria-label="Next product image"
         className={cn(
-          'focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
+          'cursor-pointer rounded-full p-2 duration-200 hover:bg-white/40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
           className,
         )}
         onClick={(e) => {

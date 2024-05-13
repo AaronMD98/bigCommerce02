@@ -6,17 +6,21 @@ import { cn } from '~/lib/utils';
 interface ColumnWithImage {
   title: string;
   copy: string;
-  image: any;
+  image?: any;
   imageAlt?: string;
   reverse?: boolean;
+  descriptionTwo?: string;
+  titleTwo?: string;
 }
 
-export default function AirbackSection({
+export default function ColumnSection({
   title,
   copy,
   image,
   imageAlt = 'Image',
   reverse = false,
+  descriptionTwo = '',
+  titleTwo = '',
 }: ColumnWithImage) {
   const sectionClasses = cn('grid py-12 md:grid-cols-2 gap-4', {
     'md:grid-cols-2': !reverse, // Standard positioning
@@ -45,15 +49,22 @@ export default function AirbackSection({
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0.5 }}
       >
-        <Image
-          src={image}
-          loading={'lazy'}
-          alt={imageAlt}
-          aria-label="informative image AirBack"
-          className="rounded-md"
-          width={800}
-          height={800}
-        />
+        {image ? (
+          <Image
+            src={image}
+            loading={'lazy'}
+            alt={imageAlt}
+            aria-label="informative image AirBack"
+            className="rounded-md"
+            width={800}
+            height={800}
+          />
+        ) : (
+          <div className="flex flex-col gap-4">
+            <h1 className="text-2xl font-semibold md:text-4xl">{titleTwo}</h1>
+            <p className="opacity-80">{descriptionTwo}</p>
+          </div>
+        )}
       </motion.div>
       <motion.div
         className="flex items-center px-2 md:px-4"

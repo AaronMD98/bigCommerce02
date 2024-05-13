@@ -41,8 +41,14 @@ interface Props {
 export const Header = async ({ cart, data }: Props) => {
   const customerId = await getSessionCustomerId();
 
+  const navLinks = [
+    { path: 'our-story', label: 'Our Story' },
+    { path: 'blog', label: 'Blogs' },
+    { path: 'shop', label: 'Shop' },
+  ];
+  console.log(data);
   return (
-    <header className="sticky top-0 z-20  border-b bg-white shadow">
+    <header className="sticky top-0 z-20 border-b bg-white shadow">
       <NavigationMenu className="flex">
         {data.settings && (
           <NavigationMenuLink asChild className="w-max shrink-0 px-0">
@@ -52,25 +58,22 @@ export const Header = async ({ cart, data }: Props) => {
           </NavigationMenuLink>
         )}
 
-        <div className="">
+        <div className="hidden xl:flex">
           <HeaderNav className="hidden xl:flex" data={data.categoryTree} />
-          <ul className="flex gap-4">
-            {[
-              { path: 'our-story', label: 'Our Story' },
-              { path: 'blog', label: 'Blogs' },
-              // { path: 'news', label: 'News' },
-              { path: 'shop', label: 'Shop' },
-            ].map((item, index) => {
-              return (
-                <li key={index} className=" font-semibold capitalize duration-200 hover:font-thin">
-                  <Link href={`/${item.path}`}>
-                    <h1>{item.label}</h1>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+
+          {navLinks.map((item, index) => {
+            return (
+              <NavigationMenuLink
+                key={index}
+                className="font-semibold capitalize duration-200 hover:font-thin"
+                href={`/${item.path}`}
+              >
+                <h1>{item.label}</h1>
+              </NavigationMenuLink>
+            );
+          })}
         </div>
+
         <div className="flex">
           <NavigationMenuList className="h-full">
             {data.settings && (
@@ -171,6 +174,7 @@ export const Header = async ({ cart, data }: Props) => {
                 </NavigationMenuLink>
               )}
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <p role="status">
                 <Suspense
@@ -191,7 +195,7 @@ export const Header = async ({ cart, data }: Props) => {
         </div>
 
         <NavigationMenuCollapsed>
-          <HeaderNav data={data.categoryTree} inCollapsedNav />
+          <HeaderNav data={data.categoryTree} inCollapsedNav links={navLinks} />
         </NavigationMenuCollapsed>
       </NavigationMenu>
     </header>

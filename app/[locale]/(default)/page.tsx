@@ -17,12 +17,12 @@ import watch from './../../../public/as-seen-on/gentlemens_s-watch.webp';
 
 import Image from 'next/image';
 import KickstarterSection from '~/components/ui/kickstarter';
-import AirbackSection from './../../../components/ui/framer-sections/compression-section';
 
 // Images
 import compressionImage from './../../../public/compression-closeup.webp';
 import airbackOrganisation from './../../../public/airback-organisation.webp';
 import { Button } from '~/components/ui/button';
+import ColumnSection from '../../../components/ui/framer-sections/sectionWithColumns';
 
 interface Props {
   params: {
@@ -72,7 +72,7 @@ export default async function Home({ params: { locale } }: Props) {
             />
           </NextIntlClientProvider>
         </div>
-        <AirbackSection
+        <ColumnSection
           title={'Airback™ Vacuum Compression System'}
           copy={
             'The Airback is fitted with a built-in vacuum system that enables you to maximize your packing space by reducing the volume of your clothes and other packable items. No need to worry about overpacking or squeezing in that extra jacket anymore!'
@@ -81,7 +81,7 @@ export default async function Home({ params: { locale } }: Props) {
           imageAlt="Compression Section"
           // reverse
         />
-        <AirbackSection
+        <ColumnSection
           title={'Clever Organization'}
           copy={`Got a lot of stuff to pack? No worries! The Airback has all sorts of pockets and compartments so you can keep your things super organized. It's like having a place for everything, so you can easily find what you need and keep your stuff tidy while you're on the go. And hey, if you're the type who loves to bring back tons of souvenirs, this bag's got your back. It can actually expand to give you that extra space when you need it. Pretty cool for those trips when you end up with more than you started with, right?`}
           image={airbackOrganisation}

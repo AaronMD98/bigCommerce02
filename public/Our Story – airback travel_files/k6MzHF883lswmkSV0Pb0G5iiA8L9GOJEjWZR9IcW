@@ -93,8 +93,8 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
             
                 "491815": {
                     instanceId: "491815",
-                    instanceVersionId: "241742246",
-                    templateAssetUrl: "https://cdn-widgetsrepository.yotpo.com/widget-assets/widget-reviews-star-ratings/app.v0.10.1-6142.js",
+                    instanceVersionId: "257293158",
+                    templateAssetUrl: "https://cdn-widgetsrepository.yotpo.com/widget-assets/widget-reviews-star-ratings/app.v0.10.1-6275.js",
                     cssOverrideAssetUrl: "",
                     customizationCssUrl: "",
                     customizations: {
@@ -155,8 +155,8 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
             
                 "491814": {
                     instanceId: "491814",
-                    instanceVersionId: "256446628",
-                    templateAssetUrl: "https://cdn-widgetsrepository.yotpo.com/widget-assets/widget-reviews-main-widget/app.v0.59.1-6243.js",
+                    instanceVersionId: "257642441",
+                    templateAssetUrl: "https://cdn-widgetsrepository.yotpo.com/widget-assets/widget-reviews-main-widget/app.v0.61.7-6281.js",
                     cssOverrideAssetUrl: "",
                     customizationCssUrl: "",
                     customizations: {
@@ -202,6 +202,9 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
                       "mobile-dropdown-default-title-text": "Please select",
                       "mobile-filters-button-text": "Filters",
                       "no-matching-reviews-text": "No matching reviews",
+                      "ocean-button-style": 1,
+                      "ocean-enable": false,
+                      "old-widget-class-name": "yotpo yotpo-main-widget",
                       "onsite-sorting": "",
                       "popular-topics-show-less-text": "Show less",
                       "popular-topics-show-more-text": "Show more",
@@ -266,9 +269,10 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
                       "reviews-reviewer-custom-questions-filters-enable": false,
                       "reviews-show-tab-title": false,
                       "reviews-summary-enable": false,
-                      "reviews-summary-toggle-enable": true,
+                      "reviews-summary-toggle-enable": "false",
                       "reviews-try-clearing-filters-text": "Try clearing or changing the filters.",
                       "reviews-votes-enable": true,
+                      "reviews-votes-text": "Was this review helpful?",
                       "reviews-votes-title": "Was this review helpful?",
                       "rtl": false,
                       "screen-a-header-text": "Hello Live Widget!",
@@ -282,6 +286,7 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
                       "shopper-avatar-format": "icon",
                       "shopper-badge-enable": true,
                       "shopper-name-format": "firstNameWithInitial",
+                      "should-lazy-load": false,
                       "show-reviews-amount-plural-text": "Show {{total_reviews_amount}} reviews",
                       "show-reviews-amount-singular-text": "Show {{total_reviews_amount}} review",
                       "smart-score-sort-enable": true,
@@ -308,7 +313,7 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
                       "verified-reviewer-text": "Verified Reviewer",
                       "view-background-color": "transparent",
                       "view-empty-button-color": "#2e4f7c",
-                      "view-layout": "boldLayout",
+                      "view-layout": "standardLayout",
                       "view-line-separator-style": "smooth",
                       "view-primary-color": "#2e4f7c",
                       "view-primary-font": "Nunito Sans@700|https://cdn-widgetsrepository.yotpo.com/web-fonts/css/nunito_sans/v1/nunito_sans_700.css",
@@ -317,6 +322,7 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
                       "view-text-color": "#2c2c2c",
                       "view-widget-width": "100",
                       "white-label-enable": false,
+                      "widget-reviews-filter-by-country-enable": false,
                       "write-a-review-button-text": "Write A Review"
                     },
                     staticContent: {
@@ -335,7 +341,7 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
                       "feature_reviews_summary": "enabled",
                       "feature_reviews_summary_filter": "enabled",
                       "feature_reviews_syndication": "enabled",
-                      "feature_reviews_video_support_settings_ks": "djJ8NTc2MTgxMnwFw_GtI954NtHoJQjQPAUn6WboCEE_-23CCSezxwSYKUE58dcD0v7_qgejWef2iKbmIAo8k3cCo0bH_ViIKnB1",
+                      "feature_reviews_video_support_settings_ks": "djJ8NTc2MTgxMnzCS9fUJ5x9VkopIwjksUB-rw7Yuk5Q1cAZhAg7FX0vK83XA6G6UVrZgdrs9o7-AYRF6cJbjoAwOnQyiKubCj9p",
                       "feature_reviews_video_support_settings_metadata_profile_id": "22453252",
                       "feature_reviews_video_support_settings_partner_id": "5761812",
                       "feature_reviews_white_label": "enabled",
@@ -352,7 +358,7 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
             dependencyGroups: {}
         },
         initializer: "https://cdn-widgetsrepository.yotpo.com/widget-assets/widgets-initializer/app.v0.9.0-6129.js",
-        analytics: "https://cdn-widgetsrepository.yotpo.com/widget-assets/yotpo-pixel/2024-04-04_07-12-10/bundle.js"
+        analytics: "https://cdn-widgetsrepository.yotpo.com/widget-assets/yotpo-pixel/2024-04-18_14-53-12/bundle.js"
     }
     
     
@@ -403,41 +409,28 @@ var yotpoWidgetsContainer = yotpoWidgetsContainer || { guids: {} };
     }
     function initWidgetsTestingGroupData(guid) {
         const testingGroupData = {};
-        const storageData = sessionStorage.getItem(`${guid}_testing_group`);
-        if (storageData) {
-            saveToWidgetsContainer(storageData);
-        } else {
-            testingGroupData.uuid = "b73fc9a8-a13b-4c4a-b0af-2a42101e5229";
-            const encodedUUID = new TextEncoder().encode(testingGroupData.uuid);
+        const storageUUIDData = sessionStorage.getItem(`${guid}_uuid`);
+        const storageTestingData = yotpoWidgetsContainer.testingGroupData;
+        if (!storageTestingData) {
+            testingGroupData.analyticsId = yotpoWidgetsContainer.GetAnalyticsId();
+            const encodedUUID = new TextEncoder().encode(testingGroupData.analyticsId);
             crypto.subtle.digest("SHA-1", encodedUUID).then(hashArrayBuffer => {
                 testingGroupData.hash = new Uint8Array(hashArrayBuffer || []);
-                yotpoWidgetsContainer.guids["k6MzHF883lswmkSV0Pb0G5iiA8L9GOJEjWZR9IcW"].testingGroupData = testingGroupData;
-                saveToWidgetsContainer(testingGroupData);
-                saveTestingGroupToSession(guid, testingGroupData);
+                yotpoWidgetsContainer.testingGroupData = testingGroupData;
             });
         }
-}
-
-    function saveTestingGroupToSession (guid, testingGroupData) {
-        sessionStorage.setItem(`${guid}_testing_group`, JSON.stringify({
-            uuid: testingGroupData.uuid,
-            hash: testingGroupData.hash
-        }));
-    }
-
-    function    saveToWidgetsContainer(testingGroupData) {
-        const guidWidgetContainer = getGuidWidgetsContainer();
-        guidWidgetContainer.testing_data = testingGroupData;
+        if (!storageUUIDData) {
+            yotpoWidgetsContainer.guids["k6MzHF883lswmkSV0Pb0G5iiA8L9GOJEjWZR9IcW"].uuid = "d6f2f54b-65b8-4f3a-8bed-0e77ee05cf88";
+        }
     }
 
     const guidWidgetContainer = getGuidWidgetsContainer();
     guidWidgetContainer.config = loader.config;
     if (!guidWidgetContainer.yotpo_widget_scripts_loaded) {
-        initWidgetsTestingGroupData(guid);
         guidWidgetContainer.yotpo_widget_scripts_loaded = true;
         guidWidgetContainer.onInitializerLoad = function () { onInitializerLoad(loader.config) };
         
-        loader.loadDep(loader.analytics, function () {}, 'defer');
+        loader.loadDep(loader.analytics, function () {  initWidgetsTestingGroupData(guid); }, 'defer');
         
         
         loader.loadDep(loader.initializer, function () { guidWidgetContainer.onInitializerLoad() }, 'async');

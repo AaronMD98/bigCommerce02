@@ -10,3 +10,5 @@ export const client = createClient({
   backendUserAgentExtensions: backendUserAgent,
   logger: process.env.NODE_ENV !== 'production' || process.env.CLIENT_LOGGER === 'true',
 });
+//
+// console.log('CLIENT', client);

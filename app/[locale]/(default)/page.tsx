@@ -23,6 +23,7 @@ import compressionImage from './../../../public/compression-closeup.webp';
 import airbackOrganisation from './../../../public/airback-organisation.webp';
 import { Button } from '~/components/ui/button';
 import ColumnSection from '../../../components/ui/framer-sections/sectionWithColumns';
+import Subscribe from '~/components/forms/subscribe';
 
 interface Props {
   params: {
@@ -88,12 +89,7 @@ export default async function Home({ params: { locale } }: Props) {
           imageAlt="Compression Section"
           reverse
         />
-        <section className="mb-12 flex w-full flex-col items-center justify-center gap-12 rounded-md border-2 py-12 shadow-md">
-          <h1 className="text-2xl font-semibold md:text-4xl">
-            Start Travelling With Comfort Today
-          </h1>
-          <Button variant="secondary"> Shop Now</Button>
-        </section>
+        <Subscribe source="storefront" />
       </div>
     </>
   );

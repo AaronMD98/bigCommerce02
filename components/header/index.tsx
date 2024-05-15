@@ -46,7 +46,7 @@ export const Header = async ({ cart, data }: Props) => {
     { path: 'blog', label: 'Blogs' },
     { path: 'shop', label: 'Shop' },
   ];
-  console.log(data);
+  // console.log(data);
   return (
     <header className="sticky top-0 z-20 border-b bg-white shadow">
       <NavigationMenu className="flex">

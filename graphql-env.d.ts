@@ -6058,6 +6058,31 @@ export type introspection = {
         "interfaces": []
       },
       {
+        "kind": "INTERFACE",
+        "name": "BaseOrder",
+        "fields": [
+          {
+            "name": "entityId",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "args": []
+          }
+        ],
+        "interfaces": [],
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "Order"
+          }
+        ]
+      },
+      {
         "kind": "OBJECT",
         "name": "Blog",
         "fields": [
@@ -16362,6 +16387,10 @@ export type introspection = {
           },
           {
             "kind": "OBJECT",
+            "name": "Order"
+          },
+          {
+            "kind": "OBJECT",
             "name": "Product"
           },
           {
@@ -17078,6 +17107,18 @@ export type introspection = {
         "name": "Order",
         "fields": [
           {
+            "name": "id",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "args": []
+          },
+          {
             "name": "entityId",
             "type": {
               "kind": "NON_NULL",
@@ -17090,7 +17131,16 @@ export type introspection = {
             "args": []
           }
         ],
-        "interfaces": []
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "Node"
+          },
+          {
+            "kind": "INTERFACE",
+            "name": "BaseOrder"
+          }
+        ]
       },
       {
         "kind": "OBJECT",

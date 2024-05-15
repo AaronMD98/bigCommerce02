@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 function Subscribe({ source = 'storefront' }: { source: string }) {
   const [email, setEmail] = useState<string>('');
   const [firstName, setFirstName] = useState<string>('');
+  const [message, setMessage] = useState<boolean>(false);
 
   // Function to handle form submission
   const handleSubmit = async (event: React.FormEvent) => {
@@ -31,7 +32,8 @@ function Subscribe({ source = 'storefront' }: { source: string }) {
       //   console.log(data);
 
       if (response.ok) {
-        alert('Thank you for subscribing!');
+        // alert('Thank you for subscribing!');
+        setMessage(true);
       } else {
         throw new Error(data.message || 'Something went wrong');
       }
@@ -71,6 +73,7 @@ function Subscribe({ source = 'storefront' }: { source: string }) {
       >
         Subscribe
       </button>
+      {message && <p>Thank you for subscribing!</p>}
     </form>
   );
 }

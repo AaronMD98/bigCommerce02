@@ -46,7 +46,7 @@ export const HeaderNav = async ({ data, className, inCollapsedNav = false, links
   const categoryTree = data.slice(0, 6);
   const customerId = await getSessionCustomerId();
 
-  console.log('CATAGORY', categoryTree);
+  // console.log('CATAGORY', categoryTree);
 
   return (
     <>

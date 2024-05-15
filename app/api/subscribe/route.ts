@@ -30,7 +30,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       },
       body: JSON.stringify({
         email: body.email,
-        first_name: body.firstName,
+        first_name: body.first_name,
         source: body.source,
         last_name: '',
         channel_id: channelId,
